@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const path = require('path');
 
 const server = http.createServer((req, res) => {
     res.writeHead(200, {
@@ -7,7 +8,7 @@ const server = http.createServer((req, res) => {
     })
 
     if (req.url === '/') {
-        const parsedData = fs.readFileSync('index.json', { encoding: "utf8" });
+        const parsedData = fs.readFileSync('./JSON-and-sticks/index.json', { encoding: "utf8" });
         let dataObj = JSON.parse(parsedData);
 
         res.write(`<h1>${dataObj.title}</h1><p>${dataObj.content}</p>`);
@@ -16,7 +17,7 @@ const server = http.createServer((req, res) => {
     }
 
     if (req.url === '/contacts') {
-        const parsedData = fs.readFileSync('contacts.json', { encoding: "utf8" });
+        const parsedData = fs.readFileSync('./JSON-and-sticks/contacts.json', { encoding: "utf8" });
         let dataObj = JSON.parse(parsedData);
 
         res.write(`<h1>${dataObj.title}</h1><p>${dataObj.content}</p>`);
