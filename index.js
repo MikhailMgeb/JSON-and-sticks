@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
     })
 
     if (req.url === '/') {
-        const parsedData = fs.readFileSync('./JSON-and-sticks/index.json', { encoding: "utf8" });
+        const parsedData = fs.readFileSync(path.join(process.cwd(), 'data-main.json'), { encoding: "utf8" });
         let dataObj = JSON.parse(parsedData);
 
         res.write(`<h1>${dataObj.title}</h1><p>${dataObj.content}</p>`);
@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
     }
 
     if (req.url === '/contacts') {
-        const parsedData = fs.readFileSync('./JSON-and-sticks/contacts.json', { encoding: "utf8" });
+        const parsedData = fs.readFileSync(path.join(process.cwd(), 'data-contacts.json'), { encoding: "utf8" });
         let dataObj = JSON.parse(parsedData);
 
         res.write(`<h1>${dataObj.title}</h1><p>${dataObj.content}</p>`);
